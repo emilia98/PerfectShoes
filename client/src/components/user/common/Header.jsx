@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class Header extends Component {
     render() {
@@ -16,7 +17,7 @@ class Header extends Component {
 					</button>
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item"><a class="nav-link menu-item" href="index.html">Home</a></li>
+							<li class="nav-item"><Link class="nav-link menu-item" to="/">Home</Link></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle menu-item" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Shop</a>
@@ -37,7 +38,7 @@ class Header extends Component {
 									<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
 								</ul>
 							</li>
-							<li class="nav-item"><a class="nav-link menu-item" href="contact.html">Contact</a></li>
+							<li class="nav-item"><Link class="nav-link menu-item" to="/contacts">Contacts</Link></li>
                             <li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle menu-item" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false"><span class="ti-user"></span></a>
@@ -50,7 +51,7 @@ class Header extends Component {
 						</ul>
 						<ul class="nav navbar-nav navbar-right menu_nav">
 							<li class="nav-item"><a href="#" class="cart nav-link dropdown-toggle menu-item"><span class="ti-bag"></span></a></li>
-                            
+                            <li class="nav-item"><Link to="/admin" class="cart nav-link dropdown-toggle menu-item"><span class="ti-dashboard"></span></Link></li>
 						</ul>
 					</div>
 				</div>

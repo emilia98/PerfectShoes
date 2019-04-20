@@ -48,6 +48,8 @@ $(document).ready(function(){
     /*=================================
     Javascript for banner area carousel
     ==================================*/
+
+    /*
     $(".active-banner-slider").owlCarousel({
         items:1,
         autoplay:false,
@@ -57,10 +59,13 @@ $(document).ready(function(){
         navText:["<img src='img/banner/prev.png'>","<img src='img/banner/next.png'>"],
         dots:false
     });
-
+*/
+    
     /*=================================
     Javascript for product area carousel
     ==================================*/
+
+    /*
     $(".active-product-area").owlCarousel({
         items:1,
         autoplay:false,
@@ -70,10 +75,12 @@ $(document).ready(function(){
         navText:["<img src='img/product/prev.png'>","<img src='img/product/next.png'>"],
         dots:false
     });
-
+*/
     /*=================================
     Javascript for single product area carousel
     ==================================*/
+
+    /*
     $(".s_Product_carousel").owlCarousel({
       items:1,
       autoplay:false,
@@ -82,10 +89,12 @@ $(document).ready(function(){
       nav:false,
       dots:true
     });
-    
+    */
     /*=================================
     Javascript for exclusive area carousel
     ==================================*/
+
+    /*
     $(".active-exclusive-product-slider").owlCarousel({
         items:1,
         autoplay:false,
@@ -95,7 +104,7 @@ $(document).ready(function(){
         navText:["<img src='img/product/prev.png'>","<img src='img/product/next.png'>"],
         dots:false
     });
-
+*/
     //--------- Accordion Icon Change ---------//
 
     $('.collapse').on('shown.bs.collapse', function(){
@@ -234,12 +243,13 @@ $(document).ready(function(){
 
 
 
+  /*
       $('.quick-view-carousel-details').owlCarousel({
           loop: true,
           dots: true,
           items: 1,
       })
-
+*/
 
 
     //----- Active No ui slider --------//
