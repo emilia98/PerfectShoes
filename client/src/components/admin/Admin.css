@@ -1,10 +1,47 @@
 .page-container {
-    background-color: white !important;
+    background-color: #f5f5f5 !important;
 }
 
 .custom-form .admin-form {
-    margin: 0 auto;
+    margin: 50px auto;
 }
+
+.table-label{
+    display: inline-block;
+    line-height: 30px;
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-transform: capitalize;
+}
+
+
+.table-label-danger {
+    background: #fa4251;
+}
+
+.table-label-success {
+    background: #57b846;
+}
+
+.nav-link {
+    width: 100%;
+   
+}
+
+.nav-link {
+    text-align: center;
+}
+
+.alert-danger-custom {
+    background-color: #D40A5C;
+    color: white;
+}
+
+
 /*
 .page-header {
     width: 100% !important;
@@ -25,25 +62,8 @@
     margin: 10px 20px;
 }
 
-.table-label-danger {
-    background: #fa4251;
-}
 
-.table-label-success {
-    background: #57b846;
-}
 
-.table-label{
-    display: inline-block;
-    line-height: 30px;
-    font-size: 14px;
-    color: #fff;
-    padding: 0 15px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    text-transform: capitalize;
-}
 
 .table-data-feature {
     justify-content: center;

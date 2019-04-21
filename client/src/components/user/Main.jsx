@@ -4,6 +4,9 @@ import Header from './common/Header';
 import Contacts from './Contacts';
 import Footer from './common/Footer';
 import Home from './Home';
+import SignUp from './Auth/SignUp';
+import SignIn from './Auth/SignIn';
+import Admin from '../admin/Admin';
 
 class Main extends Component {
     render() {
@@ -12,8 +15,10 @@ class Main extends Component {
                <Router>
                <Header />
         
-        <Home />
-         
+        
+               <Route path='/signup' component={SignUp} />
+               <Route path='/signin' component={SignIn} />
+            <Route path='/' exact component={Home} />
   <Footer />
                </Router>
        
@@ -33,5 +38,8 @@ export default Main;
       
        </Switch>
         </Router>
+
+
+         
          
 */

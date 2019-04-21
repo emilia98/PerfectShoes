@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter, Route, Switch, Link} from 'react-router-dom';
-import { NotificationContainer } from 'react-notifications'
+import { NotificationContainer } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 import Admin from '../components/admin/Admin';
 
 import Main from '../components/user/Main';

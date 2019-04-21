@@ -43,7 +43,8 @@ class Header extends Component {
 								<a href="#" class="nav-link dropdown-toggle menu-item" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false"><span class="ti-user"></span></a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+								<li class="nav-item"><Link to="/signup" class="nav-link">Sign Up</Link></li>
+									<li class="nav-item"><Link to="/signin" class="nav-link">Sign In</Link></li>
 									<li class="nav-item"><a class="nav-link" href="tracking.html">Tracking</a></li>
 									<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
 								</ul>

@@ -5,10 +5,14 @@ import MobileNav from './Navigation/MobileNav';
 
 import './public/css/font-face.css';
 import './public/css/theme.css';
+import './public/vendor/mdi-font/css/material-design-iconic-font.min.css';
+// import './public/js/main1.js';
 import NewBrand from './Brand/NewBrand';
 import Header from './Navigation/Header';
 
 import './Admin.css';
+import Brands from './Brand/Brands';
+import CategoryNew from './Category/CategoryNew.jsx';
 
 /*
  <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -38,7 +42,9 @@ class Admin extends Component
                 <Header />
 
                 <div class="main-content">
+                <Route path='/admin/brands' component={Brands} />
                 <Route path='/admin/brand/new' component={NewBrand} />
+                <Route path='/admin/category/new' component={CategoryNew} />
                 </div>
             
            </div>

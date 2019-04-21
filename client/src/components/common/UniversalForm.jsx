@@ -12,15 +12,23 @@ class UniversalForm extends Component {
         obj.errors = {};
         obj.id = this.props.id;
         obj.validations = {};
+        
 
         React.Children.forEach(this.props.children, (child) => {
-            obj[child.props.name] = child.props.defaultValue ? child.props.defaultValue : "";
-            obj.children.push(child);
-            obj.fields.push(child.props.name);
+            
+            if(child.type === 'input') {
+                obj[child.props.name] = child.props.defaultValue ? child.props.defaultValue : "";
+                obj.children.push(child);
+                obj.fields.push(child.props.name);
 
-            obj.validations[child.props.name] = child.props.validateFunc;
-            obj.errors[child.props.name] = null;
+                obj.validations[child.props.name] = child.props.validateFunc;
+                obj.errors[child.props.name] = null;
+            } else {
+
+            }
         });
+
+        console.log(obj);
 
         this.state = obj;
 
@@ -47,6 +55,7 @@ class UniversalForm extends Component {
             return response.json();
         })
         .then(data => {
+            console.log(data);
             if(data.errors) {
                 return this.setState({
                     errors: data.errors
@@ -82,6 +91,7 @@ class UniversalForm extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <React.Fragment>
 
