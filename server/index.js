@@ -31,6 +31,7 @@ cloudinary.config({
 app.use('/auth', authRouter);
 app.use('/brand', require('./routes/brand'));
 app.use('/category', categoryRouter);
+app.use('/halfshoes', require('./routes/shoes'));
 // app.use('/sticker', require('./routes/sticker'));
 app.use('/user', require('./routes/user'));
 

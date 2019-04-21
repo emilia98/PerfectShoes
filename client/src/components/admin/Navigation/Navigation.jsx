@@ -26,6 +26,8 @@ const Navigation = () => (
                 <MenuItem href='/' icon='tachometer-alt'  linkTitle ='Dashboard' />
                 <MenuItem href='/brands' icon='copyright'  linkTitle ='Brands' />
                 <MenuItem href='/category/new' icon='tags'  linkTitle ='Categories' />
+                <MenuItem href='/color/new' icon='paint-brush'  linkTitle ='Colors' />
+                <MenuItem href='/size/new' icon='ruler'  linkTitle ='Sizes' />
                 <MenuItem href='/users' icon='users'  linkTitle ='Users' />
                
                 <li className="has-sub">

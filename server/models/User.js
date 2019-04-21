@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    cart: {
+        type: mongoose.SchemaTypes.Mixed,
+        default: {}
+    },
     hashedPassword: {
         type: mongoose.SchemaTypes.String,
         required: true,
@@ -59,14 +63,14 @@ User.seedAdminUser = async () => {
     }
 
     let salt = encryption.generateSalt();
-    let hashedPass = encryption.generateHashedPassword(salt, 'admin');
+    let hashedPassword = encryption.generateHashedPassword(salt, 'admin');
 
     try {
         let user = await User.create({
             username: 'admin',
             email: 'admin@abv.bg',
             salt,
-            hashedPass,
+            hashedPassword,
             roles: ['Admin']
         });
     } catch (err) {
