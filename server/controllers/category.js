@@ -2,13 +2,16 @@ const Category = require('../models/Category');
 
 module.exports = {
     create: async (req, res) => {
-        let { title, slug } = req.body;
-        if(!validate(title, slug, res)) {
+        console.log(req.body);
+        let { name, slug, type } = req.body;
+
+        console.log(name, slug, type);
+        if(!validate(name, slug, type, res)) {
             return;
         }
 
         try {
-            let category = await Category.create({title, slug});
+            let category = await Category.create({name, slug, type});
             res.json({msg: 'Successfully created a new category!'})
             
         } catch(err) {
@@ -83,49 +86,67 @@ module.exports = {
 }
 
 
-function validate(title, slug, res){
-    let errors = [];
+function validate(name, slug, type, res){
+    let requiredErrs = [];
 
-    if(title === undefined) {
-        errors.push('Please, provide a title!');
+    console.log(name, slug, type);
+
+    if(name === undefined) {
+        requiredErrs.push('Please, provide a name!');
     }
 
     if(slug === undefined) {
-        errors.push('Please, provide a slug!');
+        requiredErrs.push('Please, provide a slug!');
     }
 
-    if(errors.length > 0) {
-     res.json({ errors });
+    if(type === undefined) {
+        requiredErrs.push('Please, provide a type!');
+    }
+
+    if(requiredErrs.length > 0) {
+     res.json({ requiredErrs });
      return false;
     }
 
-    if(title.length === 0) {
-        errors.push('Title is required!')
-    } else if(title.length > 45) {
-        errors.push('Title should be at most 45 characters!')
-    } else if(!validateTitle(title)) {
-        errors.push('Title should contain only English letters, digits, `,`, `,` and spaces');
+    let errors = {
+        name:  validateName(name),
+        slug:  validateSlug(slug),
+        type:  validateType(type)
+    }
+    
+
+    if(errors.name === null && errors.slug === null && errors.type === null) {
+        return true;
     }
 
-    if(slug.length === 0) {
-        errors.push('Slug is requried!')
-    } else if(slug.length > 60) {
-        errors.push('Slug should be at most 60 characters!')
-    } else if(!validateSlug(slug)) {
-        errors.push('Slug should contain only English letters, digits and `-`');
+    res.json({ errors });
+    return false;
+}
+
+
+function validateName(name) {
+    if(name && (name.length >= 1 && name.length <= 50) ) {
+        return null;
     }
-
-    if(errors.length > 0) {
-        res.json({ errors });
-        return false;
+  
+    return 'Category Name should be between 1 and 50 characters';
+  }
+  
+  function validateSlug(name) {
+    if(name && (name.length >= 1 && name.length <= 100) ) {
+        return null;
     }
-    return true;
-}
+  
+    return 'Category Slug should be between 1 and 100 characters';
+  }
 
-function validateTitle(title) {
-    return /^([A-Za-z0-9,.\s]+)$/.test(title);
-}
 
-function validateSlug(slug) {
-    return /^([A-Za-z0-9-]+)$/.test(slug);
-}
+  function validateType(type) {
+    if(type !== '1' && type !== '0') {
+       
+        return 'The type should be either 0 or 1!';
+       
+      } 
+
+      return null;
+  }

@@ -5,39 +5,63 @@ const passport = require('passport');
 
 module.exports = {
     signUp: async (req, res) => {
-        let { email, username, password } = req.body;
-        let errors = [];
+        let { email, username, password, repeatPass } = req.body;
+        let requiredErrs = [];
+        let errors = {
+            email: null,
+            username: null,
+            password: null,
+            repeatPass: null
+        };
         let user = null;
+        let hasError = false;
 
-        errors = checkIfUndefined(email, 'Please, provide an email!', errors);
-        errors = checkIfUndefined(username, 'Please, provide a username!', errors);
-        errors = checkIfUndefined(password, 'Please, provide a password!', errors);
+        requiredErrs = checkIfUndefined(email, 'Please, provide an email!', requiredErrs);
+        requiredErrs = checkIfUndefined(username, 'Please, provide a username!', requiredErrs);
+        requiredErrs = checkIfUndefined(password, 'Please, provide a password!', requiredErrs);
+        requiredErrs = checkIfUndefined(repeatPass, 'Please, provide a repeat password!', requiredErrs);
 
-        if(errors.length > 0) {
+        console.log(requiredErrs);
+        if(requiredErrs.length > 0) {
             return  res.json({
-                errors
+                requiredErrs
             })
         }
 
         if(email.length === 0) {
-            errors.push('Email is required!');
+            errors.email = 'Email is required!';
+            hasError = true;
+            // errors.push('Email is required!');
         } else if(!validateEmail(email)) {
-            errors.push('Please, provide a valid email!');
+            hasError = true;
+            errors.email = 'Please, provide a valid email!';
+            // errors.push('Please, provide a valid email!');
         } 
 
         if(username.length === 0) {
-            errors.push('Username is required!');
+            hasError = true;
+            errors.username = 'Username is required!';
+            // errors.push('Username is required!');
         } else if(username.length < 3 || username.length > 45) {
-            errors.push('Username should be between 3 and 45 characters!');
+            hasError = true;
+            errors.username = 'Username should be between 3 and 45 characters!';
+            // errors.push('Username should be between 3 and 45 characters!');
         } 
 
         if(password.length === 0) {
-            errors.push('Password is required!');
+            hasError = true;
+            errors.password = 'Password is required!';
+            // errors.push('Password is required!');
         } else if(password.length < 6 || password.length > 30) {
-            errors.push('Password should be between 6 and 30 characters!');
+            hasError = true;
+            errors.password = 'Password should be between 6 and 30 characters!'
+            // errors.push('Password should be between 6 and 30 characters!');
         } 
 
-        if(errors.length > 0) return  res.json({ errors });
+        if(hasError) {
+            return res.json({ hasError, errors })
+        }
+        // if(Object.keys(errors).length > 0) return  res.json({ errors });
 
         try {
             user = await User.findOne({

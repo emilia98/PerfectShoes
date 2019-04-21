@@ -14,5 +14,7 @@ module.exports = (config) => {
         console.log(err);
     });
 
+    require('../models/User');
     require('../models/Brand');
+    require('../models/Category');
 }

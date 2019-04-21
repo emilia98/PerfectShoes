@@ -2,13 +2,17 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const categorySchema = new mongoose.Schema({
-    title: {
+    name: {
         type: mongoose.SchemaTypes.String,
         required: true
     },
     slug: {
         type: mongoose.SchemaTypes.String,
         required: true
+    },
+    type: {
+        type: mongoose.SchemaTypes.String,
+        default: '1'
     },
     createdOn: {
         type: mongoose.SchemaTypes.Date,

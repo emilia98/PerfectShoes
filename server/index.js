@@ -6,7 +6,7 @@ const port = config.port;
 const app = express();
 
 const authRouter = require('./routes/auth');
-const tagRouter = require('./routes/tag');
+// const tagRouter = require('./routes/tag');
 const categoryRouter = require('./routes/category');
 const cloudinary = require('cloudinary');
 
@@ -31,7 +31,7 @@ cloudinary.config({
 app.use('/auth', authRouter);
 app.use('/brand', require('./routes/brand'));
 app.use('/category', categoryRouter);
-app.use('/sticker', require('./routes/sticker'));
+// app.use('/sticker', require('./routes/sticker'));
 app.use('/user', require('./routes/user'));
 
 app.listen(port, () => {

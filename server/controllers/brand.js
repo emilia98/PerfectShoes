@@ -20,6 +20,8 @@ module.exports = {
     getAll: async (req, res) => {
         try {
             let brands = await Brand.find();
+
+            console.log(brands);
             res.status(200).json( { data: brands, msg: 'Successfully get all the brands!'});
         } catch(err) {
             console.log(err);
@@ -84,35 +86,35 @@ module.exports = {
     },
     changeActiveStatus: async(req, res) => {
         let { id } = req.params;
-        let tag = null;
+        let brand = null;
 
         if(!id) {
             return res.json({ msg: 'Please, provide an id!', hasError: true});
         }
 
         try {
-            tag = await Tag.findById(id);
+            brand = await Brand.findById(id);
         } catch(err) {
             console.log(err);
-            return res.json({ msg: 'An error occurred while trying to get a tag!', hasError: true});
+            return res.json({ msg: 'An error occurred while trying to get a brand!', hasError: true});
         }
 
-        if(!tag) {
-            return res.json({ msg: 'This tag does not exist!', hasError: true});
+        if(!brand) {
+            return res.json({ msg: 'This brand does not exist!', hasError: true});
         }
 
-        let isActive = tag.isActive;
+        let isActive = brand.isActive;
 
-        tag.isActive = !isActive;
+        brand.isActive = !isActive;
 
         try {
-            let result = await tag.save();
+            let result = await brand.save();
 
             console.log(result);
-            res.status(200).json( { msg: 'Successfully change status of the tag!'});
+            res.status(200).json( { msg: 'Successfully change status of the brand!'});
         } catch(err) {
             console.log(err);
-            res.status(500).json( { msg: 'An error occurred while trying to change the status of a tag!', hasError: true});
+            res.status(500).json( { msg: 'An error occurred while trying to change the status of a brand!', hasError: true});
         }
     }
 }
